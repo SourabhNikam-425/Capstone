@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ dealer.name }}</h1>
+<p>{{ dealer.address }}, {{ dealer.city }}, {{ dealer.state }}</p>
+
+<h2>Reviews</h2>
+{% if dealer.reviews %}
+  <ul>
+  {% for r in dealer.reviews %}
+    <li><strong>{{ r.name }}</strong> — {{ r.review }} ({{ r.rating }} stars) — <em>{{ r.sentiment }}</em></li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No reviews yet.</p>
+{% endif %}
+
+{% if user.is_authenticated %}
+  <p><a href="/dealer/{{ dealer.dealer_id }}/add_review/">Post Review</a></p>
+{% endif %}
+{% endblock %}

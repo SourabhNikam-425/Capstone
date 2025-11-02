@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Dealers</h1>
+<form method="get" action="/dealers/">
+  <label>Filter by state (e.g., KS):</label>
+  <input type="text" name="state" id="stateFilter">
+  <button onclick="location.href='/dealers/state/'+document.getElementById('stateFilter').value">Filter</button>
+</form>
+
+<ul>
+  {% for d in dealers %}
+    <li>
+      <a href="/dealer/{{ d.dealer_id }}/">{{ d.name }}</a> — {{ d.city }}, {{ d.state }}
+    </li>
+  {% empty %}
+    <li>No dealers found.</li>
+  {% endfor %}
+</ul>
+
+{% if user.is_authenticated %}
+  <p>Logged in as {{ user.username }}</p>
+{% endif %}
+{% endblock %}

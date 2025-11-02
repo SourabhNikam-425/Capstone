@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.sqlite3
+.env
+node_modules/
+express-mongo/node_modules/
+django-app/staticfiles/
+*.log
+.vscode/
+.DS_Store
